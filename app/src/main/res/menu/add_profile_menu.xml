@@ -47,6 +47,9 @@
                         android:id="@+id/action_new_naive"
                         android:title="@string/action_naive" />
                     <item
+                        android:id="@+id/action_new_byedpi"
+                        android:title="ByeDPI" />
+                    <item
                         android:id="@+id/action_new_mieru"
                         android:title="@string/action_mieru" />
                     <item
