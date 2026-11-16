@@ -108,6 +108,26 @@ abstract class V2RayInstance(
                     externalInstances.containsKey(port) -> {
                         externalInstances[port]!!.launch()
                     }
+                                    when {
+                    externalInstances.containsKey(port) -> {
+                        externalInstances[port]!!.launch()
+                    }
+                    bean is ByeDpiBean -> {
+                        val binPath = File(app.applicationInfo.nativeLibraryDir, "libciadpi.so").canonicalPath
+                        val commands = mutableListOf(
+                            binPath,
+                            "-i", LOCALHOST,
+                            "-p", port.toString()
+                        )
+                        if (DataStore.serviceMode == io.nekohasekai.sagernet.Key.MODE_VPN &&
+                            DataStore.tunImplementation == io.nekohasekai.sagernet.TunImplementation.SYSTEM) {
+                            commands.addAll(listOf("-E", app.cacheDir.toString() + "/protect_path"))
+                        }
+                        commands.addAll(
+                            bean.cmdArgs.trim().split("\\s+".toRegex()).filter { it.isNotEmpty() }
+                        )
+                        processes.start(commands)
+                    }
                     bean is NaiveBean -> {
                         val configFile = File(
                             app.cacheDir,
