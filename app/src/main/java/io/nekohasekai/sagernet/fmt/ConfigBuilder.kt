@@ -653,8 +653,7 @@ fun buildV2RayConfig(
                                 if (proxyEntity.naiveBean != null && proxyEntity.naiveBean!!.singUoT && singUotEnabled) {
                                     uot = true
                                 }
-                            })
-                        }
+                            })    
                     }
                     } else {
                         currentOutbound.apply {
