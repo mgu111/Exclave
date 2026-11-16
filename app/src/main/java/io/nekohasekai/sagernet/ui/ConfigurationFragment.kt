@@ -495,6 +495,9 @@ class ConfigurationFragment @JvmOverloads constructor(
             R.id.action_new_naive -> {
                 startActivity(Intent(requireActivity(), NaiveSettingsActivity::class.java))
             }
+            R.id.action_new_byedpi -> {
+                startActivity(Intent(requireActivity(), ByeDpiSettingsActivity::class.java))
+            }
             R.id.action_new_hysteria2 -> {
                 startActivity(Intent(requireActivity(), Hysteria2SettingsActivity::class.java))
             }
