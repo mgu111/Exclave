@@ -30,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 
 import io.nekohasekai.sagernet.database.SubscriptionBean;
 import io.nekohasekai.sagernet.fmt.anytls.AnyTLSBean;
+import io.nekohasekai.sagernet.fmt.byedpi.ByeDpiBean;
 import io.nekohasekai.sagernet.fmt.http.HttpBean;
 import io.nekohasekai.sagernet.fmt.http3.Http3Bean;
 import io.nekohasekai.sagernet.fmt.hysteria2.Hysteria2Bean;
@@ -226,5 +227,13 @@ public class KryoConverters {
         if (bytes == null || bytes.length == 0) return null;
         return deserialize(new SubscriptionBean(), bytes);
     }
+
+    @TypeConverter
+    public static ByeDpiBean byedpiDeserialize(byte[] bytes) {
+        if (bytes == null || bytes.length == 0) return null;
+        return deserialize(new ByeDpiBean(), bytes);
+    }
+
+}
 
 }
