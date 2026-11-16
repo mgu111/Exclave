@@ -643,16 +643,19 @@ fun buildV2RayConfig(
                                 servers = listOf(SocksOutboundConfigurationObject.ServerObject().apply {
                                     address = LOCALHOST
                                     port = localPort
-                                    users = listOf(SocksOutboundConfigurationObject.ServerObject.UserObject().apply {
-                                        user = username
-                                        pass = password
-                                    })
+                                    if (proxyEntity.byedpiBean == null) {
+                                        users = listOf(SocksOutboundConfigurationObject.ServerObject.UserObject().apply {
+                                            user = username
+                                            pass = password
+                                        })
+                                    }
                                 })
                                 if (proxyEntity.naiveBean != null && proxyEntity.naiveBean!!.singUoT && singUotEnabled) {
                                     uot = true
                                 }
                             })
                         }
+                    }
                     } else {
                         currentOutbound.apply {
                             if (bean is StandardV2RayBean) {
