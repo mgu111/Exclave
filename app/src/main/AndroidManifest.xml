@@ -97,6 +97,10 @@
         tools:ignore="Deprecated">
 
         <activity
+            android:name="io.nekohasekai.sagernet.ui.profile.ByeDpiSettingsActivity"
+            android:configChanges="uiMode" />
+ 
+        <activity
             android:name="io.nekohasekai.sagernet.ui.MainActivity"
             android:exported="true"
             android:launchMode="singleTask">
