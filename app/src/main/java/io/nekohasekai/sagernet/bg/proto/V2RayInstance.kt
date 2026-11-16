@@ -93,7 +93,7 @@ abstract class V2RayInstance(
         loadConfig()
     }
 
-    @OptIn(ExperimentalUuidApi::class)
+@OptIn(ExperimentalUuidApi::class)
     @SuppressLint("SetJavaScriptEnabled")
     override fun launch() {
         val context = SagerNet.application
@@ -105,10 +105,6 @@ abstract class V2RayInstance(
                 val bean = profile.requireBean()
                 val (_, config) = pluginConfigs[port] ?: (0 to "")
                 when {
-                    externalInstances.containsKey(port) -> {
-                        externalInstances[port]!!.launch()
-                    }
-                                    when {
                     externalInstances.containsKey(port) -> {
                         externalInstances[port]!!.launch()
                     }
@@ -130,6 +126,7 @@ abstract class V2RayInstance(
                     }
                     bean is NaiveBean -> {
                         val configFile = File(
+
                             app.cacheDir,
                             "naiveproxy_" + Uuid.generateV4().toHexString() + ".json"
                         ).apply {
