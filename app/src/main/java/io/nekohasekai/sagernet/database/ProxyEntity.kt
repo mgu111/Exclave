@@ -32,6 +32,9 @@ import io.nekohasekai.sagernet.fmt.Serializable
 import io.nekohasekai.sagernet.fmt.anytls.AnyTLSBean
 import io.nekohasekai.sagernet.fmt.anytls.toUri
 import io.nekohasekai.sagernet.fmt.buildV2RayConfig
+import io.nekohasekai.sagernet.fmt.byedpi.ByeDpiBean
+import io.nekohasekai.sagernet.fmt.anytls.toUri
+import io.nekohasekai.sagernet.fmt.buildV2RayConfig
 import io.nekohasekai.sagernet.fmt.http.HttpBean
 import io.nekohasekai.sagernet.fmt.http.toUri
 import io.nekohasekai.sagernet.fmt.http3.Http3Bean
@@ -108,6 +111,7 @@ data class ProxyEntity(
     var trustTunnelBean: TrustTunnelBean? = null,
     var snellBean: SnellBean? = null,
     var masqueBean: MASQUEBean? = null,
+    var byedpiBean: ByeDpiBean? = null,
     var configBean: ConfigBean? = null,
     var chainBean: ChainBean? = null,
     var balancerBean: BalancerBean? = null
