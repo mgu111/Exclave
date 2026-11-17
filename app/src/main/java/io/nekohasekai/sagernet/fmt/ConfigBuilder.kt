@@ -2106,7 +2106,7 @@ fun buildV2RayConfig(
                     }
                 }
 
-                if (proxyEntity.needExternal() && !isBalancer && index != profileList.lastIndex) {
+                if (proxyEntity.needExternal() && proxyEntity.byedpiBean == null && !isBalancer && index != profileList.lastIndex) {
                     val mappingPort = mkPort()
                     bean.finalAddress = LOCALHOST
                     bean.finalPort = mappingPort
@@ -2127,7 +2127,7 @@ fun buildV2RayConfig(
                             })
                         pastInboundTag = tag
                     })
-                } else if (proxyEntity.needExternal()) {
+                } else if (proxyEntity.needExternal() && proxyEntity.byedpiBean == null) {
                     val mappingPort = mkPort()
                     bean.finalAddress = LOCALHOST
                     bean.finalPort = mappingPort
