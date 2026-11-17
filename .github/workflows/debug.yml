@@ -56,7 +56,8 @@ jobs:
         run: |
           echo "sdk.dir=${ANDROID_HOME}" > local.properties
           ./gradlew :app:downloadAssets
-          ./gradlew :app:assembleOssDebug :app:assembleLegacyDebug
+          ./gradlew :app:assembleOssDebug 
+          ./gradlew :app:assembleLegacyDebug
       - name: Upload Artifacts
         uses: actions/upload-artifact@v7
         with:
