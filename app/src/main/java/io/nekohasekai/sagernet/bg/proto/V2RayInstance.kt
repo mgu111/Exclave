@@ -112,12 +112,14 @@ abstract class V2RayInstance(
                         val binPath = File(app.applicationInfo.nativeLibraryDir, "libciadpi.so").canonicalPath
                         val commands = mutableListOf(
                             binPath,
-                            "-i", LOCALHOST,
-                            "-p", port.toString()
+                            "--ip", LOCALHOST,
+                            "--port", port.toString()
                         )
                         if (DataStore.serviceMode == io.nekohasekai.sagernet.Key.MODE_VPN &&
                             DataStore.tunImplementation == io.nekohasekai.sagernet.TunImplementation.SYSTEM) {
-                            commands.addAll(listOf("-E", app.cacheDir.toString() + "/protect_path"))
+                            // processes run with noBackupFilesDir as working directory,
+                            // which is where Exclave creates protect_path
+                            commands.addAll(listOf("--protect-path", "protect_path"))
                         }
                         commands.addAll(
                             bean.cmdArgs.trim().split("\\s+".toRegex()).filter { it.isNotEmpty() }
