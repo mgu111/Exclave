@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://android.com"
-    xmlns:app="http://android.com">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditTextPreference
         app:icon="@drawable/ic_social_emoji_symbols"
@@ -8,11 +6,13 @@
         app:title="@string/profile_name"
         app:useSimpleSummaryProvider="true" />
 
-    <EditTextPreference
-        app:dialogMessage="-s1 -o1 -Ar -o1 -At -f-1 -r1+s -As"
-        app:icon="@drawable/ic_baseline_layers_24"
-        app:key="serverConfig"
-        app:title="ByeDPI Arguments (ciadpi)"
-        app:useSimpleSummaryProvider="true" />
+    <PreferenceCategory app:title="@string/proxy_cat">
+
+        <EditTextPreference
+            app:icon="@drawable/ic_action_description"
+            app:key="serverConfig"
+            app:title="Command-line arguments"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
