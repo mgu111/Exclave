@@ -494,6 +494,10 @@ data class ProxyEntity(
                 type = TYPE_BALANCER
                 balancerBean = bean
             }
+            is ByeDpiBean -> {
+                type = TYPE_BYEDPI
+                byedpiBean = bean
+            }
             else -> error("Undefined type $type")
         }
         return this
