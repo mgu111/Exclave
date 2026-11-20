@@ -36,15 +36,16 @@ jobs:
         uses: nttld/setup-ndk@v1
         with:
           ndk-version: r30
+      - name: Checkout ByeDPI
+        uses: actions/checkout@v4
+        with:
+          repository: hufrea/byedpi
+          ref: v0.17.3
+          path: byedpi_src
       - name: Build ByeDPI (libciadpi.so)
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
         run: |
-          REPO_OWNER="hufrea"
-          REPO_NAME="byedpi"
-          curl -sL "https://github.com{REPO_OWNER}/${REPO_NAME}/tar.gz/refs/tags/v0.17.3" | tar -xz
-          mv byedpi-0.17.3 byedpi_src
-
           python3 - << 'EOF'
           with open("byedpi_src/desync.c", "r") as f:
               code = f.read()
